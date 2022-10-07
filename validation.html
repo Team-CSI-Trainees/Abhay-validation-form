@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+    <style>
+        form{
+            padding-top: 5vh;
+            display: grid;
+            grid-template-columns: 25% 10px;
+            padding-left: 20vw;
+            font-weight: bold;
+            font-size: 100%;
+        }
+        *{
+            background-color: azure;
+            background-clip: border-box;
+        }
+        input{
+            width: 20vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Form Validation</h1>
+    <form onsubmit="return validateForm()">
+       <p> Username :</p><p> <input type="text" placeholder="username" class="required" id="username"></p>
+       <p id="usererror" class="error"></p>
+       <p></p>
+       <p> Email :</p><p> <input type="text" placeholder="email" class="required" id="email"></p>
+       <p id="emailerror" class="error"></p>
+       <p></p>
+       <p >Mobile:</p><p><input type="text" placeholder="Mobile" id="mobile"></p>
+       <p id="mobileerror" class="error"></p>
+       <p></p>
+       <p> Create password : </p><p><input type="text" placeholder="password" class="required" id="password"></p>
+       <p id="passworderror" class="error"></p>
+       <p></p>
+        <p>Confirm password :</p><p> <input type="text" placeholder="password" class="required" id="confirmpassword"></p>
+        <p id="confirmerror" class="error"></p>
+        <p></p>
+        <button type="submit">Submit</button>
+
+
+    </form>
+    <script>
+        function validateForm() {
+        var username=document.getElementById('username').value;
+        var email=document.getElementById('email').value;
+        var password=document.getElementById('password').value;
+        var confirmpassword=document.getElementById('confirmpassword').value;
+        var mobile=document.getElementById('mobile').value;
+        var usernamecheck=/^[A-Za-z.]{3,30}$/;
+        var passwordcheck=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+        var emailcheck=/^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z]{2,6}$/;
+        var mobilecheck=/^[6789][0-9]{9}$/;
+        
+        if(usernamecheck.test(username)){
+            document.getElementById(usererror).innerHTML="";
+        }
+        else{
+            document.getElementById(usererror).innerHTML="**invalid name";
+            return false;
+        }
+        if(passwordcheck.test(password)){
+            document.getElementById(passworderror).innerHTML="";
+        }
+        else{
+            document.getElementById(passworderror).innerHTML="**invalid name";
+            return false;
+        }
+        if(mobilecheck.test(mobile)){
+            document.getElementById(mobileerror).innerHTML="";
+        }
+        else{
+            document.getElementById(mobileerror).innerHTML="**invalid name";
+            return false;
+        }
+        if(confirmpassword.match(password)){
+            document.getElementById(confirmerror).innerHTML="";
+        }
+        else{
+            document.getElementById(usererror).innerHTML="**invalid name";
+            return false;
+        }
+        if(emailcheck.test(emaik)){
+            document.getElementById(emailerror).innerHTML="";
+        }
+        else{
+            document.getElementById(emailerror).innerHTML="**invalid name";
+            return false;
+        }
+    }
+    </script>
+
+</div>
+</body>
+</html>
