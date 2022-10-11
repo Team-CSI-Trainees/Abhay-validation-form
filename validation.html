@@ -6,95 +6,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validation Form</title>
     <style>
-        form{
-            padding-top: 5vh;
-            display: grid;
-            grid-template-columns: 25% 10px;
-            padding-left: 20vw;
-            font-weight: bold;
-            font-size: 100%;
-        }
-        *{
-            background-color: azure;
-            background-clip: border-box;
+
+        html{
+           background-image: url("https://image.shutterstock.com/image-vector/abstract-mesh-background-lines-vector-260nw-185065568.jpg");
+           
+           background-repeat: no-repeat; 
+           font-weight: lighter;
+           background-size: cover;
+           padding-bottom: 35px;
         }
         input{
             width: 20vw;
         }
+        .error{
+            color: red;
+            
+         
+        }
+        input:hover{
+            border-width: 3px;
+            border-color: red;
+            transform: scale(1.5);
+            font-size: 2vh;
+             
+        }
+        button{
+            background-color: blue;
+            color: beige;
+            width: 10vw;
+            text-align: center;
+            border-radius: 5px;
+            height:5vh;
+        }
+        button:hover{
+            background-color: red;
+            color: black;
+            font-size: 3vh;
+            font-weight: bolder;
+        }
+        .button{
+            text-align: right;
+        }
+        .innercontainer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            
+        }
+        .left{
+            text-align: left;
+        }
+        .innerleft{
+            display: grid;
+            grid-template-rows: repeat(6 1fr);
+            grid-template-columns: 1fr;
+            padding-left: 15vw;
+            height: 100%;
+        }
+
+        .right{
+            display: grid;
+            grid-template-rows: repeat(6 1fr);
+            grid-template-columns: 1fr;
+
+        }
+    .radio{
+        padding: 0%;
+        width: 5%;
+    }
+    .gender{
+        padding:0% ;
+        margin-top: 0%;
+    }
+    .popup{
+        visibility: hidden;
+    }
+
     </style>
 </head>
 <body>
-    <div class="container">
-    <h1>Form Validation</h1>
-    <form onsubmit="return validateForm()">
-       <p> Username :</p><p> <input type="text" placeholder="username" class="required" id="username"></p>
+    <div class="container" >
+    <h1 style="text-align:center ;">Form Validation</h1>
+    <form name="form" onsubmit="return validateForm()">
+    <div class="innercontainer" class="popup">
+    <div class="left">
+        <div class="innerleft">
+        <p>Username:</p>
+        <p id="usererror" class="error"></p>
+        <p>Gender:</p>
+        <p id="gendererror" class="error"></p>
+        <p></p>
+        <p>Select Branch:</p>
+        <p id="selectionerror" class="error"></p>
+        <p> Email :</p>
+        <p id="emailerror" class="error"></p>
+        <p >Mobile:</p>
+        <p id="mobileerror" class="error"></p>
+        <p> Create password : </p>
+        <p id="passworderror" class="error"></p>
+        <p>Confirm password :</p>
+        <p id="confirmerror" class="error"></p>
+    </div>
+    </div>
+
+
+    <div class="right">
+        <p><input type="text" placeholder="Enter Username" class="required" id="username"></p>
+        <p></p>
+        <p class="gender"><input type="radio" name="gender" id="gender" class="radio">Male</p>
+        <p class="gender"><input type="radio" name="gender" id="gender" class="radio">Female</p>
+        <p class="gender"><input type="radio" name="gender" id="gender" class="radio">Rather Not Say</p>
+        <p><select id="select"><option value="selectbranch">Select Branch</option>
+                   <option >Web Developer</option>
+                   <option>App Developer</option>
+                   <option>Machine learner</option>
+                   <option>Designer</option>
+        </select></p>
+        <p></p>
+        <p> <input type="text" placeholder="Email" class="required" id="email"></p>
+        <p></p>
+        
+        <p><input type="text" placeholder="Mobile Number" id="mobile"></p>
+        <p></p>
+        <p><input type="text" placeholder="New password" class="required" id="password"></p>
+        <p></p>
+        <p> <input type="text" placeholder="Confirm password" class="required" id="confirmpassword"></p>
+        <p></p>
+
+    </div>
+    <p class="button"><button type="submit">Submit</button></p>
+</form>
+    </div>
+    <!--<form onsubmit="return validateForm()">
+       <p> Username :</p><p> <input type="text" placeholder="Enter Username" class="required" id="username"></p>
        <p id="usererror" class="error"></p>
        <p></p>
-       <p> Email :</p><p> <input type="text" placeholder="email" class="required" id="email"></p>
+       <p>Gender:</p><p><input type="radio" name="gender" id="male">Male</p>
+       <p></p><p><input type="radio" name="gender" id="female">Female</p>
+       <p></p><p><input type="radio" name="gender" id="rathernotsay">Rather Not Say</p>
+       <p> Email :</p><p> <input type="text" placeholder="Email" class="required" id="email"></p>
        <p id="emailerror" class="error"></p>
        <p></p>
-       <p >Mobile:</p><p><input type="text" placeholder="Mobile" id="mobile"></p>
+       <p >Mobile:</p><p><input type="text" placeholder="Mobile Number" id="mobile"></p>
        <p id="mobileerror" class="error"></p>
        <p></p>
-       <p> Create password : </p><p><input type="text" placeholder="password" class="required" id="password"></p>
+       <p> Create password : </p><p><input type="text" placeholder="New password" class="required" id="password"></p>
        <p id="passworderror" class="error"></p>
        <p></p>
-        <p>Confirm password :</p><p> <input type="text" placeholder="password" class="required" id="confirmpassword"></p>
+        <p>Confirm password :</p><p> <input type="text" placeholder="Confirm password" class="required" id="confirmpassword"></p>
         <p id="confirmerror" class="error"></p>
         <p></p>
-        <button type="submit">Submit</button>
+        <p class="button"><button type="submit">Submit</button></p>
 
 
-    </form>
-    <script>
-        function validateForm() {
-        var username=document.getElementById('username').value;
-        var email=document.getElementById('email').value;
-        var password=document.getElementById('password').value;
-        var confirmpassword=document.getElementById('confirmpassword').value;
-        var mobile=document.getElementById('mobile').value;
-        var usernamecheck=/^[A-Za-z.]{3,30}$/;
-        var passwordcheck=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-        var emailcheck=/^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z]{2,6}$/;
-        var mobilecheck=/^[6789][0-9]{9}$/;
+    </form>-->
+    <script type="text/javascript">
+        function
+        validateForm() {
+    
         
-        if(usernamecheck.test(username)){
-            document.getElementById(usererror).innerHTML="";
+            var select=document.getElementById('select').value;
+            var gender=document.form.gender;
+            var flag=1;
+            var username=document.getElementById('username').value;
+            var email=document.getElementById('email').value;
+            var password=document.getElementById('password').value;
+            var confirmpassword=document.getElementById('confirmpassword').value;
+            var mobile=document.getElementById('mobile').value;
+            var usercheck = /^[A-Za-z. ]{3,30}$/ ;
+            var passwordcheck=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+            var emailcheck=/^[A-Za-z0-9_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+            var mobilecheck=/^[6789][0-9]{9}$/;
+            
+            if(usercheck.test(username)){
+                document.getElementById('usererror').innerHTML="";
+                console.log(username);
+                 
+             }else{
+                document.getElementById('usererror').innerHTML="**Username must be alpahabet and length between 3 and 30";
+                return false;
+             }
+             for(i=0;i<gender.length;i++){
+                if (gender[i].checked == true){
+                document.getElementById('gendererror').innerHTML="";
+                console.log(gender);
+
+                flag=0;
+             }}
+             if(flag==1){
+                document.getElementById('gendererror').innerHTML="**Select gender field";
+                return false;
+             }
+            if(select == 'selectbranch'){
+                document.getElementById('selectionerror').innerHTML="**Select Branch field";
+                return false;
+            }
+            else{
+                document.getElementById('selectionerror').innerHTML="";
+                console.log(select);
+            }
+            if(emailcheck.test(email)){
+                document.getElementById('emailerror').innerHTML="";
+                 console.log(email);
+            }
+            else{
+                document.getElementById('emailerror').innerHTML="**Enter valid email address";
+                return false;
+            }
+            if(mobilecheck.test(mobile)){
+            document.getElementById('mobileerror').innerHTML="";
+            console.log(mobile);
         }
         else{
-            document.getElementById(usererror).innerHTML="**invalid name";
+            document.getElementById('mobileerror').innerHTML="**Enter Indian mobile number";
             return false;
         }
+        
+    
+
+        
+           
+
         if(passwordcheck.test(password)){
-            document.getElementById(passworderror).innerHTML="";
+            document.getElementById('passworderror').innerHTML="";
+            console.log(password);
         }
         else{
-            document.getElementById(passworderror).innerHTML="**invalid name";
+            document.getElementById('passworderror').innerHTML="**Password must contain special character and numerical and length between 8 and 16 ";
             return false;
         }
-        if(mobilecheck.test(mobile)){
-            document.getElementById(mobileerror).innerHTML="";
-        }
-        else{
-            document.getElementById(mobileerror).innerHTML="**invalid name";
-            return false;
-        }
+
         if(confirmpassword.match(password)){
-            document.getElementById(confirmerror).innerHTML="";
+            document.getElementById('confirmerror').innerHTML="";
         }
         else{
-            document.getElementById(usererror).innerHTML="**invalid name";
+            document.getElementById('confirmerror').innerHTML="**Password not match";
             return false;
         }
-        if(emailcheck.test(emaik)){
-            document.getElementById(emailerror).innerHTML="";
-        }
-        else{
-            document.getElementById(emailerror).innerHTML="**invalid name";
-            return false;
-        }
+        alert("Form Submitted Succesfully")
+        
+
+
     }
-    </script>
+ </script>
 
 </div>
 </body>
