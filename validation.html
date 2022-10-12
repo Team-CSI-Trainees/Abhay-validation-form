@@ -8,32 +8,48 @@
     <style>
 
         html{
-           background-image: url("https://image.shutterstock.com/image-vector/abstract-mesh-background-lines-vector-260nw-185065568.jpg");
+           background-image: linear-gradient(to right bottom,rgb(205, 119, 179),rgb(156, 193, 156),rgb(158, 158, 75),rgb(81, 81, 221));
            
            background-repeat: no-repeat; 
            font-weight: lighter;
            background-size: cover;
            padding-bottom: 35px;
+           font-size: 2rem;
+        
         }
         input{
             width: 20vw;
+            height: 2em;
+            font-size:  ;
         }
         .error{
             color: red;
+            padding: 0%;
+            margin: 0%;
+            font-size: 2vh;
             
          
         }
-        input:hover{
+    /* input:hover{
             border-width: 3px;
             border-color: red;
-            transform: scale(1.5);
-            font-size: 2vh;
+            
+            font-size: 2em;
              
+        }*/
+        p{
+            font-size: smaller;
+            padding: 0%;
+           
+            margin:1vw;
+        }
+        .inn{
+            font-size:1em;
         }
         button{
             background-color: blue;
             color: beige;
-            width: 10vh;
+            width: 15vh;
             text-align: center;
             border-radius: 5px;
             height:5vh;
@@ -45,7 +61,7 @@
             font-weight: bolder;
         }
         .button{
-            text-align: right;
+            text-align: center;
         }
         .innercontainer{
             display: grid;
@@ -69,96 +85,83 @@
             grid-template-columns: 1fr;
 
         }
-    .radio{
-        padding: 0%;
-        width: 5%;
-    }
-    .gender{
+
+    #gender{
         padding:0% ;
         margin-top: 0%;
+        width: 0.8rem;
+      
     }
     .popup{
         visibility: hidden;
     }
+    #select{
+        height: 2em;
+        width: 21vw;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6 1fr);
+    }
+    .p{
+        text-align:left;
+        padding-left:20vw;
+    }
+
 
     </style>
 </head>
 <body>
-    <div class="container" >
     <h1 style="text-align:center ;">Form Validation</h1>
-    <form  action="" name="form" onsubmit="return validateForm()">
-    <div class="innercontainer" class="popup">
-    <div class="left">
-        <div class="innerleft">
-        <p>Username:</p>
-        <p id="usererror" class="error"></p>
-        <p>Gender:</p>
-        <p id="gendererror" class="error"></p>
-        <p></p>
-        <p>Select Branch:</p>
-        <p id="selectionerror" class="error"></p>
-        <p> Email :</p>
-        <p id="emailerror" class="error"></p>
-        <p >Mobile:</p>
-        <p id="mobileerror" class="error"></p>
-        <p> Create password : </p>
-        <p id="passworderror" class="error"></p>
-        <p>Confirm password :</p>
-        <p id="confirmerror" class="error"></p>
-    </div>
-    </div>
-
-
-    <div class="right">
+    <form  action="" name="form"  onsubmit="return validateForm()">
+    <div class="container" >
+        <p class="p">Username:</p>
         <p><input type="text" placeholder="Enter Username" class="required" id="username"></p>
         <p></p>
-        <p class="gender"><input type="radio" name="gender" id="gender" class="radio">Male</p>
-        <p class="gender"><input type="radio" name="gender" id="gender" class="radio">Female</p>
-        <p class="gender"><input type="radio" name="gender" id="gender" class="radio">Rather Not Say</p>
-        <p><select id="select"><option value="selectbranch">Select Branch</option>
-                   <option >Web Developer</option>
-                   <option>App Developer</option>
-                   <option>Machine learner</option>
-                   <option>Designer</option>
-        </select></p>
+        <p id="usererror" class="error" ></p>
+        <p class="p">Gender:</p>
+        <p class="gender"><input type="radio" name="gender" id="gender" class="radio"> <span class="inn">Male</span>
+            <input type="radio" name="gender" id="gender" class="radio"><span class="inn">Female</span>
+           <input type="radio" name="gender" id="gender" class="radio"> <span class="inn">Rather Not Say</span></p>
         <p></p>
+        <p id="gendererror" class="error"></p>
+        <p class="p">Select Branch:</p>
+        <p><select id="select"><option value="selectbranch">Select Branch</option>
+            <option >Web Developer</option>
+            <option>App Developer</option>
+            <option>Machine learner</option>
+            <option>Designer</option>
+ </select></p>
+ <p></p>
+ <p id="selectionerror" class="error"></p>
+        <p class="p"> Email :</p>
         <p> <input type="text" placeholder="Email" class="required" id="email"></p>
         <p></p>
-        
+        <p id="emailerror" class="error"></p>
+        <p class="p" >Mobile:</p>
         <p><input type="text" placeholder="Mobile Number" id="mobile"></p>
         <p></p>
+        <p id="mobileerror" class="error"></p>
+        <p class="p"> Create password : </p>
+        
         <p><input type="text" placeholder="New password" class="required" id="password"></p>
         <p></p>
+        <p id="passworderror" class="error"></p>
+        <p class="p">Confirm password :</p>
+        
         <p> <input type="text" placeholder="Confirm password" class="required" id="confirmpassword"></p>
         <p></p>
+        <p id="confirmerror" class="error"></p>
+
+
+
 
     </div>
     <p class="button"><button type="submit">Submit</button></p>
 </form>
-    </div>
-    <!--<form onsubmit="return validateForm()">
-       <p> Username :</p><p> <input type="text" placeholder="Enter Username" class="required" id="username"></p>
-       <p id="usererror" class="error"></p>
-       <p></p>
-       <p>Gender:</p><p><input type="radio" name="gender" id="male">Male</p>
-       <p></p><p><input type="radio" name="gender" id="female">Female</p>
-       <p></p><p><input type="radio" name="gender" id="rathernotsay">Rather Not Say</p>
-       <p> Email :</p><p> <input type="text" placeholder="Email" class="required" id="email"></p>
-       <p id="emailerror" class="error"></p>
-       <p></p>
-       <p >Mobile:</p><p><input type="text" placeholder="Mobile Number" id="mobile"></p>
-       <p id="mobileerror" class="error"></p>
-       <p></p>
-       <p> Create password : </p><p><input type="text" placeholder="New password" class="required" id="password"></p>
-       <p id="passworderror" class="error"></p>
-       <p></p>
-        <p>Confirm password :</p><p> <input type="text" placeholder="Confirm password" class="required" id="confirmpassword"></p>
-        <p id="confirmerror" class="error"></p>
-        <p></p>
-        <p class="button"><button type="submit">Submit</button></p>
+  
 
-
-    </form>-->
     <script type="text/javascript">
         function
         validateForm() {
@@ -172,7 +175,7 @@
             var password=document.getElementById('password').value;
             var confirmpassword=document.getElementById('confirmpassword').value;
             var mobile=document.getElementById('mobile').value;
-            var usercheck = /^[A-Za-z. ]{3,30}$/ ;
+            var usercheck = /^[A-Za-z. ]{2,30}$/ ;
             var passwordcheck=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
             var emailcheck=/^[A-Za-z0-9_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
             var mobilecheck=/^[6789][0-9]{9}$/;
@@ -182,7 +185,7 @@
                 console.log(username);
                  
              }else{
-                document.getElementById('usererror').innerHTML="**Username must be alpahabet and length between 3 and 30";
+                document.getElementById('usererror').innerHTML="**Username must be alpahabet and length between 2 and 30";
                 return false;
              }
              for(i=0;i<gender.length;i++){
